@@ -1,4 +1,4 @@
-import { getMenuItems } from "./parser.mjs";
+import { getMenuItems } from "./parser.js";
 import path from "path";
 import Fastify from 'fastify'
 import fastifyStatic from '@fastify/static';
@@ -11,12 +11,12 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const server = Fastify({
   logger: true
 })
-
-
+/*
 server.register(fastifyStatic, {
   root: path.join(__dirname, 'public'),
   prefix: '/',
 })
+*/
 server.register(fastifyProxy, {
   upstream: 'https://mylpj.ch/devabr/cinqsens-automate-standalone/css/',
   prefix: '/css', // optional
@@ -49,7 +49,7 @@ server.get('/', async (request, reply) => {
       justify-content: center;
     }
     </style>
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" />
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   </head>
   <body>
   <nav class="navbar">
@@ -106,9 +106,11 @@ ${await getMenuItems(2)}
   </html>`;
 })
 
+const port = process.env.PORT || 8080;
+
 const start = async () => {
   try {
-    await server.listen({ port: 8080 });
+    await server.listen({ port, host: '0.0.0.0' });
   } catch (err) {
     server.log.error(err);
     process.exit(1);
