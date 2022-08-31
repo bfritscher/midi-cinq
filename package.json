@@ -1,0 +1,20 @@
+{
+  "name": "refetch-interval",
+  "version": "1.0.0",
+  "main": "index.mjs",
+  "license": "MIT",
+  "dependencies": {
+    "@fastify/http-proxy": "8.2.2",
+    "@fastify/static": "6.5.0",
+    "fastify": "4.5.3",
+    "jsdom": "20.0.0",
+    "node-fetch": "3.2.10",
+    "nodemon": "2.0.19"
+  },
+  "scripts": {
+    "start": "nodemon index.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.21"
+  }
+}
